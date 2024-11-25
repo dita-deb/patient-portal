@@ -3,69 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patient 3 - Portal</title>
+  <title>Patient 3 - LocIT Health Portal</title>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
-  <h1>Patient 3 - Portal</h1>
+  <h1>Welcome to the LocIT Health Portal</h1>
+  
   <div id="patient-info">
-    <!-- Patient info will be injected here -->
+    <div class="patient-info">
+      <h2>Michael Johnson</h2>
+      <p><strong>Age:</strong> 50</p>
+      <p><strong>Gender:</strong> Male</p>
+      <p><strong>Blood Type:</strong> B+</p>
+      <p><strong>Phone:</strong> +1 234-567-8901</p>
+      <p><strong>Address:</strong> 789 Pine St, AnyCity, AnyState, 54321</p>
+      <p><strong>Email:</strong> michaeljohnson@email.com</p>
+      <p><strong>Allergies:</strong> Latex, Pollen</p>
+      
+      <div class="medical-history">
+        <strong>Medical History:</strong>
+        <ul>
+          <li><strong>Heart Disease</strong> (Diagnosed on: 2016-03-10)</li>
+          <li><strong>High Cholesterol</strong> (Diagnosed on: 2019-08-12)</li>
+        </ul>
+      </div>
+      
+      <div class="emergency-contact">
+        <strong>Emergency Contact:</strong>
+        <p>Name: Sarah Johnson</p>
+        <p>Phone: +1 654-321-0987</p>
+        <p>Relation: Wife</p>
+      </div>
+      
+      <p><strong>Last Visit:</strong> 2023-11-01</p>
+    </div>
   </div>
-
-  <script>
-    const data = [
-      {
-        "patient_id": "605c72ef153207001f8e2d2a3",
-        "name": "Robert Brown",
-        "age": 60,
-        "gender": "Male",
-        "blood_type": "B+",
-        "phone": "+1 345-678-9012",
-        "address": "789 Pine St, YetAnotherCity, YetAnotherState, 67890",
-        "email": "robertbrown@email.com",
-        "allergies": ["Latex", "Dust"],
-        "medical_history": [
-          {
-            "diagnosis": "Heart Disease",
-            "diagnosed_on": "2019-11-05",
-            "medications": ["Atenolol", "Simvastatin"],
-            "notes": "Requires regular heart checkups."
-          }
-        ],
-        "emergency_contact": {
-          "name": "Emily Brown",
-          "phone": "+1 345-678-9013",
-          "relation": "Daughter"
-        },
-        "last_visit": "2023-06-30"
-      }
-    ];
-
-    let patientInfoHtml = '';
-    data.forEach(patient => {
-      patientInfoHtml += `
-        <div class="patient-info">
-          <h2>${patient.name}</h2>
-          <p><strong>Age:</strong> ${patient.age}</p>
-          <p><strong>Gender:</strong> ${patient.gender}</p>
-          <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
-          <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
-          
-          <div class="medical-history">
-            <strong>Medical History:</strong>
-            <ul>
-              ${patient.medical_history.map(mh => `
-                <li><strong>${mh.diagnosis}</strong> (Diagnosed on: ${mh.diagnosed_on})</li>
-              `).join('')}
-            </ul>
-          </div>
-        </div>
-      `;
-    });
-
-    document.getElementById('patient-info').innerHTML = patientInfoHtml;
-  </script>
 
 </body>
 </html>
