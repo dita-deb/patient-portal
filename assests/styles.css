@@ -1,46 +1,89 @@
+/* General Body Style */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fc; /* Light gray background */
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  box-sizing: border-box;
 }
 
+/* Main Title Style */
 h1 {
-  color: #333;
+  text-align: center;
+  color: #2d3a4a;
+  margin-top: 30px;
+  font-size: 36px;
 }
 
+/* Patient Info Section */
+#patient-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 30px;
+}
+
+/* Patient Info Card Style */
 .patient-info {
   background-color: #fff;
-  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  margin-top: 20px;
-  width: 80%;
-  max-width: 800px;
+  margin: 15px;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.patient-info:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Patient Name and Info */
 .patient-info h2 {
-  color: #007BFF;
+  color: #4a90e2;
+  font-size: 24px;
+  text-align: center;
   margin-bottom: 10px;
 }
 
 .patient-info p {
+  font-size: 16px;
+  color: #333;
   margin: 5px 0;
 }
 
+.patient-info strong {
+  color: #2d3a4a;
+}
+
+/* Medical History Section */
 .medical-history {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .medical-history ul {
-  padding-left: 20px;
+  list-style: none;
+  padding-left: 0;
 }
 
 .medical-history li {
-  margin-bottom: 5px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #patient-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .patient-info {
+    width: 80%;
+  }
 }
