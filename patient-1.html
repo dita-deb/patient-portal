@@ -27,14 +27,33 @@
 <body>
   <div class="container">
     <h1>Patient Portal</h1>
-    <div class="patient-info">
-      <p><strong>Name:</strong> John Doe</p>
-      <p><strong>Age:</strong> 45</p>
-      <p><strong>Gender:</strong> Male</p>
-      <p><strong>Blood Type:</strong> A+</p>
-      <p><strong>Medical History:</strong> Hypertension, Diabetes</p>
-      <p><strong>Allergies:</strong> None</p>
-    </div>
+    <div id="patient-info" class="patient-info"></div>
   </div>
+
+  <script>
+    const jsonURL = 'https://drive.google.com/uc?export=download&id=1zu1LNM-mhUxF0XEKFmw2gnrZDNCpeS9V';
+
+    // Fetch the JSON data from the Google Drive link
+    fetch(jsonURL)
+      .then(response => response.json())
+      .then(data => {
+        let patientInfoHtml = '';
+        // Loop through the data and display it
+        data.forEach(patient => {
+          patientInfoHtml += `
+            <h2>${patient.name}</h2>
+            <p><strong>Age:</strong> ${patient.age}</p>
+            <p><strong>Gender:</strong> ${patient.gender}</p>
+            <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
+            <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
+            <p><strong>Medical History:</strong> ${patient.medical_history.map(mh => mh.diagnosis).join(', ')}</p>
+          `;
+        });
+
+        // Inject the HTML into the page
+        document.getElementById('patient-info').innerHTML = patientInfoHtml;
+      })
+      .catch(error => console.error('Error fetching the JSON data:', error));
+  </script>
 </body>
 </html>
