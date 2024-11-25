@@ -8,34 +8,85 @@
 </head>
 <body>
 
-  <h1>Patient 4 - Medical Information</h1>
-  <div class="patient-info">
-    <h2>Michael Smith</h2>
-    <p><strong>Age:</strong> 59</p>
-    <p><strong>Gender:</strong> Male</p>
-    <p><strong>Blood Type:</strong> B+</p>
-    <p><strong>Allergies:</strong> Penicillin, Dust</p>
-
-    <div class="medical-history">
-      <strong>Medical History:</strong>
-      <ul>
-        <li><strong>Heart Disease</strong> (Diagnosed on: 2015-11-22)</li>
-        <li><strong>Arthritis</strong> (Diagnosed on: 2018-06-10)</li>
-      </ul>
-    </div>
-
-    <h3>Medications:</h3>
-    <ul>
-      <li>Atenolol</li>
-      <li>Ibuprofen</li>
-    </ul>
-
-    <p><strong>Emergency Contact:</strong></p>
-    <p>Name: Sarah Smith (Wife)</p>
-    <p>Phone: +1 555-987-6543</p>
-
-    <p><strong>Last Visit:</strong> 2024-02-15</p>
+  <h1>Welcome to the Patient Portal</h1>
+  <div id="patient-info">
+    <!-- Patient info will be injected here -->
   </div>
+
+  <script>
+    // Manually inserted data for Patient 4 (same structure as Patient 1)
+    const data = [
+      {
+        "patient_id": "605c72ef153207001f8e2d2b4",
+        "name": "Michael Smith",
+        "age": 59,
+        "gender": "Male",
+        "blood_type": "B+",
+        "phone": "+1 555-987-6543",
+        "address": "456 Oak St, AnotherCity, AnotherState, 67890",
+        "email": "michaelsmith@email.com",
+        "allergies": ["Penicillin", "Dust"],
+        "medical_history": [
+          {
+            "diagnosis": "Heart Disease",
+            "diagnosed_on": "2015-11-22",
+            "medications": ["Atenolol"],
+            "notes": "Requires regular checkups."
+          },
+          {
+            "diagnosis": "Arthritis",
+            "diagnosed_on": "2018-06-10",
+            "medications": ["Ibuprofen"],
+            "notes": "Monitor pain levels and movement."
+          }
+        ],
+        "emergency_contact": {
+          "name": "Sarah Smith",
+          "phone": "+1 555-987-6543",
+          "relation": "Wife"
+        },
+        "last_visit": "2024-02-15"
+      }
+    ];
+
+    // Process and display the data on the page in the same format as Patient 1
+    let patientInfoHtml = '';
+    data.forEach(patient => {
+      patientInfoHtml += `
+        <div class="patient-info">
+          <h2>${patient.name}</h2>
+          <p><strong>Age:</strong> ${patient.age}</p>
+          <p><strong>Gender:</strong> ${patient.gender}</p>
+          <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
+          <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
+          
+          <div class="medical-history">
+            <strong>Medical History:</strong>
+            <ul>
+              ${patient.medical_history.map(mh => `
+                <li><strong>${mh.diagnosis}</strong> (Diagnosed on: ${mh.diagnosed_on})</li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <h3>Medications:</h3>
+          <ul>
+            ${patient.medical_history.map(mh => mh.medications.map(med => `
+              <li>${med}</li>
+            `).join('')).join('')}
+          </ul>
+
+          <p><strong>Emergency Contact:</strong></p>
+          <p>Name: ${patient.emergency_contact.name} (${patient.emergency_contact.relation})</p>
+          <p>Phone: ${patient.emergency_contact.phone}</p>
+
+          <p><strong>Last Visit:</strong> ${patient.last_visit}</p>
+        </div>
+      `;
+    });
+
+    document.getElementById('patient-info').innerHTML = patientInfoHtml;
+  </script>
 
 </body>
 </html>
