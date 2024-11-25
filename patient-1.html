@@ -12,40 +12,55 @@
   </div>
 
   <script>
-    // Use the correct raw GitHub URL for the JSON file
-    const jsonURL = 'https://raw.githubusercontent.com/dita-deb/patient-portal/main/JSON%20Medical%20Files/MOCK_DATA.json';
+    // Manually inserted data (same structure as the JSON file)
+    const data = [
+      {
+        "patient_id": "605c72ef153207001f8e2d2a5",
+        "name": "John Doe",
+        "age": 45,
+        "gender": "Male",
+        "blood_type": "A+",
+        "phone": "+1 123-456-7890",
+        "address": "123 Elm St, SomeCity, SomeState, 12345",
+        "email": "johndoe@email.com",
+        "allergies": ["Peanuts", "Milk"],
+        "medical_history": [
+          {
+            "diagnosis": "Hypertension",
+            "diagnosed_on": "2018-05-10",
+            "medications": ["Lisinopril", "Aspirin"],
+            "notes": "Regular checkups required."
+          },
+          {
+            "diagnosis": "Asthma",
+            "diagnosed_on": "2015-09-22",
+            "medications": ["Albuterol"],
+            "notes": "Use inhaler during attacks."
+          }
+        ],
+        "emergency_contact": {
+          "name": "Jane Doe",
+          "phone": "+1 987-654-3210",
+          "relation": "Spouse"
+        },
+        "last_visit": "2023-09-15"
+      }
+    ];
 
-    // Fetch the JSON data from GitHub
-    fetch(jsonURL)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-  console.log(data); // Add this for debugging
-  let patientInfoHtml = '';
-  data.forEach(patient => {
-    patientInfoHtml += `
-      <h2>${patient.name}</h2>
-      <p><strong>Age:</strong> ${patient.age}</p>
-      <p><strong>Gender:</strong> ${patient.gender}</p>
-      <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
-      <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
-      <p><strong>Medical History:</strong> ${patient.medical_history.map(mh => mh.diagnosis).join(', ')}</p>
-    `;
-  });
+    // Process and display the data on the page
+    let patientInfoHtml = '';
+    data.forEach(patient => {
+      patientInfoHtml += `
+        <h2>${patient.name}</h2>
+        <p><strong>Age:</strong> ${patient.age}</p>
+        <p><strong>Gender:</strong> ${patient.gender}</p>
+        <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
+        <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
+        <p><strong>Medical History:</strong> ${patient.medical_history.map(mh => mh.diagnosis).join(', ')}</p>
+      `;
+    });
 
-  document.getElementById('patient-info').innerHTML = patientInfoHtml;
-})
-
-      .catch(error => {
-        console.error('Error fetching the JSON data:', error);
-        document.getElementById('patient-info').innerHTML = 'Error loading patient data.';
-      });
+    document.getElementById('patient-info').innerHTML = patientInfoHtml;
   </script>
 </body>
 </html>
-
-
