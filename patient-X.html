@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient X - LocIT Health Portal</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+  <h1>Welcome to the LocIT Health Portal</h1>
+  <div id="patient-info">
+    <!-- Patient info will be injected here -->
+  </div>
+
+  <script>
+    const data = [
+      {
+        "patient_id": "605c72ef153207001f8e2d2aX",  <!-- Unique Patient ID for Patient X -->
+        "name": "Patient X",                      <!-- Patient Name -->
+        "age": 30,                               <!-- Age -->
+        "gender": "Gender",                       <!-- Gender -->
+        "blood_type": "Blood Type",               <!-- Blood Type -->
+        "phone": "+1 123-456-7890",               <!-- Phone Number -->
+        "address": "123 Some St, City, State, 12345",  <!-- Address -->
+        "email": "patientX@email.com",            <!-- Email Address -->
+        "allergies": ["Allergen 1", "Allergen 2"],   <!-- Allergies -->
+        "medical_history": [
+          {
+            "diagnosis": "Condition 1",
+            "diagnosed_on": "Date 1",
+            "medications": ["Medication 1", "Medication 2"],
+            "notes": "Some notes about the condition"
+          },
+          {
+            "diagnosis": "Condition 2",
+            "diagnosed_on": "Date 2",
+            "medications": ["Medication 3"],
+            "notes": "Additional notes"
+          }
+        ],
+        "emergency_contact": {
+          "name": "Emergency Contact Name",
+          "phone": "+1 987-654-3210",
+          "relation": "Spouse"
+        },
+        "last_visit": "2023-11-10"
+      }
+    ];
+
+    let patientInfoHtml = '';
+    data.forEach(patient => {
+      patientInfoHtml += `
+        <div class="patient-info">
+          <h2>${patient.name}</h2>
+          <p><strong>Age:</strong> ${patient.age}</p>
+          <p><strong>Gender:</strong> ${patient.gender}</p>
+          <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
+          <p><strong>Phone:</strong> ${patient.phone}</p>
+          <p><strong>Address:</strong> ${patient.address}</p>
+          <p><strong>Email:</strong> ${patient.email}</p>
+          <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
+          
+          <div class="medical-history">
+            <strong>Medical History:</strong>
+            <ul>
+              ${patient.medical_history.map(mh => `
+                <li><strong>${mh.diagnosis}</strong> (Diagnosed on: ${mh.diagnosed_on})</li>
+              `).join('')}
+            </ul>
+          </div>
+          
+          <div class="emergency-contact">
+            <strong>Emergency Contact:</strong>
+            <p>Name: ${patient.emergency_contact.name}</p>
+            <p>Phone: ${patient.emergency_contact.phone}</p>
+            <p>Relation: ${patient.emergency_contact.relation}</p>
+          </div>
+          
+          <p><strong>Last Visit:</strong> ${patient.last_visit}</p>
+        </div>
+      `;
+    });
+
+    document.getElementById('patient-info').innerHTML = patientInfoHtml;
+  </script>
+
+</body>
+</html>
