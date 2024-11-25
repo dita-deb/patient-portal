@@ -31,9 +31,10 @@
   </div>
 
   <script>
-    const jsonURL = 'https://drive.google.com/uc?export=download&id=1zu1LNM-mhUxF0XEKFmw2gnrZDNCpeS9V';
+    // URL for the raw JSON file hosted on GitHub
+    const jsonURL = 'https://raw.githubusercontent.com/dita-deb/patient-portal/main/JSON-Medical-Data/MOCK_DATA.json';
 
-    // Fetch the JSON data from the Google Drive link
+    // Fetch the JSON data from GitHub
     fetch(jsonURL)
       .then(response => response.json())
       .then(data => {
