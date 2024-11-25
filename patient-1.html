@@ -15,38 +15,37 @@
 
   <script>
     const data = [
-{
-  "patient_id": "605c72ef153207001f8e2d2a1",
-  "name": "John Doe",
-  "age": 45,
-  "gender": "Male",
-  "blood_type": "A+",
-  "phone": "+1 123-456-7890",
-  "address": "123 Elm St, SomeCity, SomeState, 12345",
-  "email": "johndoe@email.com",
-  "allergies": ["Peanuts", "Milk"],
-  "medical_history": [
-    {
-      "diagnosis": "Hypertension",
-      "diagnosed_on": "2018-05-10",
-      "medications": ["Lisinopril", "Aspirin"],
-      "notes": "Regular checkups required."
-    },
-    {
-      "diagnosis": "Asthma",
-      "diagnosed_on": "2015-09-22",
-      "medications": ["Albuterol"],
-      "notes": "Use inhaler during attacks."
-    }
-  ],
-  "emergency_contact": {
-    "name": "Jane Doe",
-    "phone": "+1 987-654-3210",
-    "relation": "Spouse"
-  },
-  "last_visit": "2023-09-15"
-}
-
+      {
+        "patient_id": "605c72ef153207001f8e2d2a1",
+        "name": "John Doe",
+        "age": 45,
+        "gender": "Male",
+        "blood_type": "A+",
+        "phone": "+1 123-456-7890",
+        "address": "123 Elm St, SomeCity, SomeState, 12345",
+        "email": "johndoe@email.com",
+        "allergies": ["Peanuts", "Milk"],
+        "medical_history": [
+          {
+            "diagnosis": "Hypertension",
+            "diagnosed_on": "2018-05-10",
+            "medications": ["Lisinopril", "Aspirin"],
+            "notes": "Regular checkups required."
+          },
+          {
+            "diagnosis": "Asthma",
+            "diagnosed_on": "2015-09-22",
+            "medications": ["Albuterol"],
+            "notes": "Use inhaler during attacks."
+          }
+        ],
+        "emergency_contact": {
+          "name": "Jane Doe",
+          "phone": "+1 987-654-3210",
+          "relation": "Spouse"
+        },
+        "last_visit": "2023-09-15"
+      }
     ];
 
     let patientInfoHtml = '';
@@ -57,6 +56,9 @@
           <p><strong>Age:</strong> ${patient.age}</p>
           <p><strong>Gender:</strong> ${patient.gender}</p>
           <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
+          <p><strong>Phone:</strong> ${patient.phone}</p>
+          <p><strong>Address:</strong> ${patient.address}</p>
+          <p><strong>Email:</strong> ${patient.email}</p>
           <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
           
           <div class="medical-history">
@@ -67,6 +69,15 @@
               `).join('')}
             </ul>
           </div>
+          
+          <div class="emergency-contact">
+            <strong>Emergency Contact:</strong>
+            <p>Name: ${patient.emergency_contact.name}</p>
+            <p>Phone: ${patient.emergency_contact.phone}</p>
+            <p>Relation: ${patient.emergency_contact.relation}</p>
+          </div>
+          
+          <p><strong>Last Visit:</strong> ${patient.last_visit}</p>
         </div>
       `;
     });
