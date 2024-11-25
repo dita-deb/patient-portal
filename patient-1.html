@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patient Portal</title>
+  <title>Patient 1 - LocIT Health Portal</title>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
-  <h1>Welcome to the Patient Portal</h1>
+  <h1>Welcome to the LocIT Health Portal</h1>
   <div id="patient-info">
     <!-- Patient info will be injected here -->
   </div>
 
   <script>
-    // Manually inserted data (same structure as the JSON file)
     const data = [
       {
         "patient_id": "605c72ef153207001f8e2d2a5",
@@ -49,7 +48,6 @@
       }
     ];
 
-    // Process and display the data on the page
     let patientInfoHtml = '';
     data.forEach(patient => {
       patientInfoHtml += `
