@@ -24,21 +24,22 @@
         return response.json();
       })
       .then(data => {
-        let patientInfoHtml = '';
-        data.forEach(patient => {
-          patientInfoHtml += `
-            <h2>${patient.name}</h2>
-            <p><strong>Age:</strong> ${patient.age}</p>
-            <p><strong>Gender:</strong> ${patient.gender}</p>
-            <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
-            <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
-            <p><strong>Medical History:</strong> ${patient.medical_history.map(mh => mh.diagnosis).join(', ')}</p>
-          `;
-        });
+  console.log(data); // Add this for debugging
+  let patientInfoHtml = '';
+  data.forEach(patient => {
+    patientInfoHtml += `
+      <h2>${patient.name}</h2>
+      <p><strong>Age:</strong> ${patient.age}</p>
+      <p><strong>Gender:</strong> ${patient.gender}</p>
+      <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
+      <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
+      <p><strong>Medical History:</strong> ${patient.medical_history.map(mh => mh.diagnosis).join(', ')}</p>
+    `;
+  });
 
-        // Inject the HTML into the page
-        document.getElementById('patient-info').innerHTML = patientInfoHtml;
-      })
+  document.getElementById('patient-info').innerHTML = patientInfoHtml;
+})
+
       .catch(error => {
         console.error('Error fetching the JSON data:', error);
         document.getElementById('patient-info').innerHTML = 'Error loading patient data.';
@@ -46,3 +47,5 @@
   </script>
 </body>
 </html>
+
+
