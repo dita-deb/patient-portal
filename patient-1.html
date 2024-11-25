@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Patient Data</h1>
+        <pre id="json-display"></pre>
+    </div>
+    <script>
+        // URL of your hosted JSON (Google Drive direct access link)
+        const jsonUrl = "https://drive.google.com/uc?id=1zu1LNM-mhUxF0XEKFmw2gnrZDNCpeS9V";
+
+        // Fetch the JSON data and display it
+        fetch(jsonUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Format and display the JSON data in the pre tag
+                document.getElementById("json-display").textContent = JSON.stringify(data, null, 4);
+            })
+            .catch(error => console.error("Error loading the JSON data:", error));
+    </script>
+</body>
+</html>
