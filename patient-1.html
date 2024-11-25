@@ -35,6 +35,15 @@
     .patient-info p {
       margin: 5px 0;
     }
+    .medical-history {
+      margin-top: 10px;
+    }
+    .medical-history ul {
+      padding-left: 20px;
+    }
+    .medical-history li {
+      margin-bottom: 5px;
+    }
   </style>
 </head>
 <body>
@@ -90,7 +99,15 @@
           <p><strong>Gender:</strong> ${patient.gender}</p>
           <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
           <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
-          <p><strong>Medical History:</strong> ${patient.medical_history.map(mh => mh.diagnosis).join(', ')}</p>
+          
+          <div class="medical-history">
+            <strong>Medical History:</strong>
+            <ul>
+              ${patient.medical_history.map(mh => `
+                <li><strong>${mh.diagnosis}</strong> (Diagnosed on: ${mh.diagnosed_on})</li>
+              `).join('')}
+            </ul>
+          </div>
         </div>
       `;
     });
