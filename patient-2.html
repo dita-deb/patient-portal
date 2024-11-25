@@ -9,63 +9,36 @@
 <body>
 
   <h1>Welcome to the LocIT Health Portal</h1>
+  
   <div id="patient-info">
-    <!-- Patient info will be injected here -->
+    <div class="patient-info">
+      <h2>Jane Smith</h2>
+      <p><strong>Age:</strong> 34</p>
+      <p><strong>Gender:</strong> Female</p>
+      <p><strong>Blood Type:</strong> O+</p>
+      <p><strong>Phone:</strong> +1 987-654-3210</p>
+      <p><strong>Address:</strong> 456 Oak St, AnotherCity, AnotherState, 67890</p>
+      <p><strong>Email:</strong> janesmith@email.com</p>
+      <p><strong>Allergies:</strong> Dust, Pollen</p>
+      
+      <div class="medical-history">
+        <strong>Medical History:</strong>
+        <ul>
+          <li><strong>Diabetes</strong> (Diagnosed on: 2017-08-14)</li>
+          <li><strong>Chronic Back Pain</strong> (Diagnosed on: 2019-02-22)</li>
+        </ul>
+      </div>
+      
+      <div class="emergency-contact">
+        <strong>Emergency Contact:</strong>
+        <p>Name: Robert Smith</p>
+        <p>Phone: +1 123-456-7890</p>
+        <p>Relation: Brother</p>
+      </div>
+      
+      <p><strong>Last Visit:</strong> 2023-10-05</p>
+    </div>
   </div>
-
-  <script>
-    const data = [
-      {
-        "patient_id": "605c72ef153207001f8e2d2a6",
-        "name": "Jane Smith",
-        "age": 32,
-        "gender": "Female",
-        "blood_type": "O+",
-        "phone": "+1 234-567-8901",
-        "address": "456 Oak St, AnotherCity, AnotherState, 67890",
-        "email": "janesmith@email.com",
-        "allergies": ["Shellfish", "Penicillin"],
-        "medical_history": [
-          {
-            "diagnosis": "Diabetes",
-            "diagnosed_on": "2020-01-15",
-            "medications": ["Metformin"],
-            "notes": "Monitor blood sugar levels."
-          }
-        ],
-        "emergency_contact": {
-          "name": "John Smith",
-          "phone": "+1 234-567-8902",
-          "relation": "Husband"
-        },
-        "last_visit": "2023-08-30"
-      }
-    ];
-
-    let patientInfoHtml = '';
-    data.forEach(patient => {
-      patientInfoHtml += `
-        <div class="patient-info">
-          <h2>${patient.name}</h2>
-          <p><strong>Age:</strong> ${patient.age}</p>
-          <p><strong>Gender:</strong> ${patient.gender}</p>
-          <p><strong>Blood Type:</strong> ${patient.blood_type}</p>
-          <p><strong>Allergies:</strong> ${patient.allergies.join(', ')}</p>
-          
-          <div class="medical-history">
-            <strong>Medical History:</strong>
-            <ul>
-              ${patient.medical_history.map(mh => `
-                <li><strong>${mh.diagnosis}</strong> (Diagnosed on: ${mh.diagnosed_on})</li>
-              `).join('')}
-            </ul>
-          </div>
-        </div>
-      `;
-    });
-
-    document.getElementById('patient-info').innerHTML = patientInfoHtml;
-  </script>
 
 </body>
 </html>
